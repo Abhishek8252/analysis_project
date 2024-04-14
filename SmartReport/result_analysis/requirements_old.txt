@@ -1,0 +1,7 @@
+Django==2.1.3
+django-crispy-forms
+Pillow
+pytz
+tabula-py
+xlsxwriter
+openpyxl

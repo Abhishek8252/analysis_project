@@ -1,0 +1,54 @@
+{% extends 'ResultAnalysysFinal.html' %}
+
+{% block content %}
+
+  {% if state is 0 %}
+    <div style="text-align: center">
+    <a style="text-align: center" href="{% url 'result_analysis' %}" class="btn btn-primary">analysis</a>
+    </div>
+  {% endif %}
+
+
+    <form action="{% url 'result_analysis' %}" method="post" >
+      {% csrf_token %}
+     <button type="submit" name='current_state' value={{state}} class="btn btn-primary" onclick="ready()">{{state}}</button>
+     </form>
+     <br>
+
+
+     {% if analysis_files%}
+    <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Download</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for file in analysis_files %}
+        <tr>
+          <td>{{ file.title }}</td>
+          <td>
+            <a href="{{ file.excel.url }}" class="btn btn-primary btn-sm" target="_blank">
+              Download Excel
+            </a>
+          </td>
+
+           <td>
+            <form method="post" action="{% url 'delete_analysis' file.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+
+      {% endif %}
+  </table>
+
+
+
+
+{% endblock %}

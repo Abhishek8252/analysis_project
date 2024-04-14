@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  {% if state is 0 %}
+    <div style="text-align: center">
+    <a style="text-align: center" href="{% url 'analysis' %}" class="btn btn-primary">analysis</a>
+    </div>
+  {% endif %}
+
+<!--    <form action="{% url 'analysis' %}" method="post" >-->
+<!--      {% csrf_token %}-->
+<!--     <button type="submit" name='current_state' value={{state}} class="btn btn-primary">{{state}}</button>-->
+<!--     </form>-->
+
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for file in analysis_files %}
+        <tr>
+          <td>{{ file.title }}</td>
+          <td>
+            <a href="{{ file.excel.url }}" class="btn btn-primary btn-sm" target="_blank">
+              Download Excel
+            </a>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

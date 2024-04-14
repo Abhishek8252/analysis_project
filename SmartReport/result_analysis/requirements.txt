@@ -1,0 +1,9 @@
+Django
+django-crispy-forms==1.14.0
+Pillow
+pytz
+tabula-py
+xlsxwriter
+pdfplumber
+fpdf
+faker

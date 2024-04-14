@@ -1,0 +1,38 @@
+{% extends 'ResultAnalysys.html' %}
+
+{% block content %}
+
+  {% block content_header %}
+    <p>
+      <a href="{% url 'upload_result' %}" class="btn btn-primary">Upload Result</a>
+    </p>
+  {% endblock %}
+
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Download</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for result in results %}
+        <tr>
+          <td>{{ result.title }}</td>
+          <td>
+            <a href="{{ result.pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
+              Download PDF
+            </a>
+          </td>
+          <td>
+            <form method="post" action="{% url 'delete_result' result.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
