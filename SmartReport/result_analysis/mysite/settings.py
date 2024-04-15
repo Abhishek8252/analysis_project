@@ -39,7 +39,7 @@ if DEBUG:
     # Update the development server command
     RUNSERVER_COMMAND = ['python', 'manage.py', 'runserver', RUNSERVER_DEFAULT]
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # settings.py
 
