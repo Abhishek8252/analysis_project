@@ -12,9 +12,11 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+# Retrieve the port number from the environment variable
+PORT = os.environ.get('PORT', '8000')  # Default to port 8000 if PORT environment variable is not set
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
@@ -24,6 +26,18 @@ SECRET_KEY = '3w5+j6wh0^w9pjv14egctmtb^(7cq#whl%q(_8t*_(q2y^5z@a'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+# Update the development server settings
+if DEBUG:
+    # Development server settings
+    # Set the port to the one retrieved from the environment variable
+    # Use a default value of 8000 if the environment variable is not set
+    DEBUG_PORT = int(PORT)
+    # Add the development server settings
+    # Use the default settings if PORT is not specified
+    RUNSERVER_DEFAULT = f'0.0.0.0:{DEBUG_PORT}' if PORT else '0.0.0.0:8000'
+    # Update the development server command
+    RUNSERVER_COMMAND = ['python', 'manage.py', 'runserver', RUNSERVER_DEFAULT]
 
 ALLOWED_HOSTS = []
 
