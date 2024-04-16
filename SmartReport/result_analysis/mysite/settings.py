@@ -39,7 +39,7 @@ if DEBUG:
     # Update the development server command
     RUNSERVER_COMMAND = ['python', 'manage.py', 'runserver', RUNSERVER_DEFAULT]
 
-ALLOWED_HOSTS = ["https://analysis-project-2.onrender.com/",'*']
+ALLOWED_HOSTS = ['*']
 
 # settings.py
 
@@ -72,9 +72,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-SECURE_SSL_REDIRECT = True
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
+
 
 CORS_ORIGIN_WHITELIST = [
     'https://analysis-project-2.onrender.com/',
