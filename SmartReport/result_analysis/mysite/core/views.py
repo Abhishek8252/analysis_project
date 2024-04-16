@@ -58,7 +58,7 @@ def result_list(request):
     })
 
 def report(request):
-    directory_path = os.path.join(BASE_DIR, '.', 'media', 'analysis')
+    directory_path = os.path.join(BASE_DIR,  'media', 'analysis')
     files = os.listdir(directory_path)
     download_links = []
     for file_name in files:
